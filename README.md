@@ -19,20 +19,22 @@ Prerequisites
 Android Studio: Version 4.0 or higher.
 Android Device/Emulator: API 21 (Android 5.0) or higher.
 WeatherAPI Key: Sign up at WeatherAPI to get an API key.
+
 Setup Instructions
 1. Clone the Repository
-
 git clone https://github.com/your-username/WeatherApp.git
 cd WeatherApp
+
 2. Open in Android Studio
 Open Android Studio.
 Select Open an existing project and choose the WeatherApp directory.
+
 3. Add WeatherAPI Key
 Open res/values/strings.xml.
 Add your WeatherAPI key:
-xml
-
+res/strings.xml
 <string name="weather_api_key">YOUR_API_KEY_HERE</string>
+
 4. Add Dependencies
 Ensure the following dependencies are added in app/build.gradle:
 
@@ -49,11 +51,7 @@ Also, ensure you have the following in the android block of app/build.gradle:
 
 gradle
 
-Collapse
 
-Wrap
-
-Copy
 android {
     compileSdk 34
     defaultConfig {
@@ -63,10 +61,9 @@ android {
 }
 5. Add Permissions
 Add the following permissions to AndroidManifest.xml:
-
-
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 6. Sync and Build
 Sync the project with Gradle by clicking the Sync Project with Gradle Files button in Android Studio.
 Build and run the app on an emulator or physical device.
@@ -76,47 +73,25 @@ Hourly.java: A model class for hourly weather data (time, temperature, condition
 HourlyAdapters.java: A RecyclerView adapter for displaying hourly forecasts.
 res/layout/activity_main.xml: The main layout file for the app's UI.
 res/layout/item_hourly.xml: The layout for each hourly forecast item in the RecyclerView.
+
 Usage
 Launch the app on your device or emulator.
 Grant location permission when prompted to allow the app to fetch your current location.
 The app will display:
 Current weather conditions (temperature, condition, wind speed, humidity, AQI).
 Hourly forecast for 8 PM to 12 AM with weather icons.
-The status bar is customized with a dark gray background and white icons/text.
 Code Highlights
 Fetching Weather Data
 The app uses the WeatherAPI to fetch current and forecast data:
-
-
-API_URL = "https://api.weatherapi.com/v1/forecast.json?key=" + getString(R.string.weather_api_key) + "&q=" + city + "&aqi=yes&days=1";
-StringRequest stringRequest = new StringRequest(Request.Method.GET, API_URL, response -> {
-    // Parse JSON and update UI
-}, error -> {
-    Toast.makeText(MainActivity.this, "Error fetching data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-});
-queue.add(stringRequest);
-Customizing Status Bar
-The status bar is set to a dark gray background with white icons/text:
-
-
-getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.dark_gray));
-if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-    getWindow().getDecorView().setSystemUiVisibility(
-        getWindow().getDecorView().getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-    );
-}
 Displaying Hourly Forecast
 The app uses a RecyclerView to display hourly forecasts:
 
-
-recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-adapterHourly = new HourlyAdapters(hourlyItems);
-recyclerView.setAdapter(adapterHourly);
 Dependencies
 Volley: For making HTTP requests to the WeatherAPI.
 Glide: For loading weather condition icons from URLs.
 Google Play Services (Location): For fetching the user's current location.
 RecyclerView: For displaying the hourly forecast.
+
 Limitations
 The app currently fetches the hourly forecast for a fixed set of hours (8 PM to 12 AM). This can be made dynamic by adjusting the desiredHours array.
 The app requires an internet connection and location permissions to function.
