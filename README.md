@@ -92,25 +92,4 @@ Glide: For loading weather condition icons from URLs.
 Google Play Services (Location): For fetching the user's current location.
 RecyclerView: For displaying the hourly forecast.
 
-Limitations
-The app currently fetches the hourly forecast for a fixed set of hours (8 PM to 12 AM). This can be made dynamic by adjusting the desiredHours array.
-The app requires an internet connection and location permissions to function.
-The AQI is displayed using the US EPA index; support for other indices (e.g., DEFRA) can be added.
-Future Improvements
-Add a 7-day forecast view (as indicated by the "Next 7 days" tab).
-Implement dynamic status bar color changes based on weather conditions (e.g., blue for sunny, gray for cloudy).
-Add support for switching between Celsius and Fahrenheit.
-Include more air quality details (e.g., PM2.5, PM10 levels).
-Contributing
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Make your changes and commit (git commit -m "Add your feature").
-Push to the branch (git push origin feature/your-feature).
-Create a pull request.
-License
-This project is licensed under the MIT License - see the  file for details.
-
-Acknowledgments
-WeatherAPI for providing the weather data.
-Glide for image loading.
-Volley for network requests.
+https://www.weatherapi.com/ go this website get new key add that key in strings.xml change the key and run the app.
